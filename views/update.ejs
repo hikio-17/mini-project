@@ -1,0 +1,85 @@
+<div class="container">
+  <br /><br />
+  <h2 class="text-center mb-3 fw-bold">Form Update Kontak</h2>
+
+  <div class="row mt-3 d-flex justify-content-center">
+    <div class="col-md-6">
+      <% if (errors.length > 0) { %>
+      <div class="alert alert-danger" role="alert">
+        <ul>
+          <% errors.forEach(error => { %>
+          <li><%= error %></li>
+          <% }) %>
+        </ul>
+      </div>
+      <% } %>
+      <form
+        method="post"
+        action="http://localhost:5000/api/contact/update-contact/<%= contact._id %> "
+      >
+        <div class="mb-3">
+          <label for="name" class="form-label">Nama Lengkap</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            class="form-control"
+            value="<%= contact.name %>"
+            required
+          />
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            class="form-control"
+            value="<%= contact.email %>"
+            required
+          />
+        </div>
+        <div class="mb-3">
+          <label for="gender" class="form-label">Jenis Kelamin</label>
+          <input
+            type="text"
+            id="gender"
+            name="gender"
+            class="form-control"
+            value="<%= contact.gender %>"
+            required
+          />
+        </div>
+        <div class="mb-3">
+          <label for="nohp" class="form-label">No.Handphone</label>
+          <input
+            type="text"
+            id="nohp"
+            name="nohp"
+            class="form-control"
+            value="<%= contact.nohp %>"
+            required
+          />
+        </div>
+        <div class="mb-3">
+          <label for="address" class="form-label">Alamat</label>
+          <input
+            type="text"
+            id="address"
+            name="address"
+            class="form-control"
+            value="<%= contact.address %>"
+            required
+          />
+        </div>
+
+        <div class="d-flex justify-content-between">
+          <button type="submit" class="btn btn-primary">Update Kontak</button>
+          <a href="http://localhost:5000/api/contacts" class="btn btn-primary"
+            >Kembali</a
+          >
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

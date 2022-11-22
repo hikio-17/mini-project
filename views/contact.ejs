@@ -1,0 +1,50 @@
+<div class="container mt-3">
+  <br /><br />
+  <h2 class="text-center fw-bold mb-3">Daftar Kontak</h2>
+  <br />
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <% if (msg.length !== 0) { %>
+      <div class="alert alert-success" role="alert"><%= msg %></div>
+      <% } %>
+      <a
+        href="http://localhost:5000/api/form-add-contact"
+        class="btn btn-primary mb-3"
+        >+ Tambah Kontak</a
+      >
+      <table
+        class="table align-middle table-striped table-bordered table-light"
+      >
+        <thead class="table-dark text-center">
+          <tr>
+            <th scope="col">No</th>
+            <th scope="col">Nama</th>
+            <th scope="col">Email</th>
+            <th scope="col">No.HP</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% if (contacts.length < 1) { %>
+          <tr class="fw-bold alert alert-warning text-center">
+            <td colspan="4" rowspan="4">Data masih kosong</td>
+          </tr>
+          <% } %> <% contacts.forEach((contact, i) => { %>
+          <tr>
+            <th scope="row" class="text-center"><%= i+1 %></th>
+            <td><%= contact.name %></td>
+            <td><%= contact.email %></td>
+            <td class="text-center">
+              <a
+                href="http://localhost:5000/api/contact/<%= contact._id %>"
+                class="btn btn-success"
+                >Detail</a
+              >
+            </td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+      <br />
+    </div>
+  </div>
+</div>

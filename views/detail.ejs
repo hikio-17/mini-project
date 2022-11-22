@@ -1,0 +1,80 @@
+<div class="container">
+  <br /><br />
+  <h2 class="mb-5 text-center fw-bold">Detail Kontak</h2>
+
+  <div class="row mt-3 d-flex justify-content-center">
+    <div class="col-md-8">
+      <% if (!contact) { %>
+      <div class="alert alert-danger fw-bold">
+        Data kontak tidak ditemukan <br />
+        <a
+          href="http://localhost:5000/api/contacts"
+          class="fw-normal alert-link"
+          >&laquo; Kembali ke kontak</a
+        >
+      </div>
+      <% } else { %>
+      <div class="card mb-3" style="max-width: 800px">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <a
+              href="http://localhost:5000/api/contacts"
+              class="bi bi-arrow-left-square-fill btn btn-info btn-small"
+            >
+              Back</a
+            >
+            <% if (contact.gender === 'perempuan') { %>
+            <img
+              src="https://www.kibrispdr.org/data/638/icon-wanita-png-20.jpg"
+              class="img-fluid rounded-circle"
+              alt="..."
+            />
+            <% } else { %>
+            <img
+              src="https://e7.pngegg.com/pngimages/44/585/png-clipart-computer-icons-businessperson-company-logo-business-company-people.png"
+              class="img-fluid rounded-circle"
+              alt="..."
+            />
+            <% }%>
+          </div>
+          <div class="col-md-8">
+            <div class="row m-3 mt-5">
+              <div class="col-md-3">
+                <div class="card-body">
+                  <h5 class="card-title">Nama</h5>
+                  <h5 class="card-title">Email</h5>
+                  <h5 class="card-title">Gender</h5>
+                  <h5 class="card-title">No.Hp</h5>
+                  <h5 class="card-title">Alamat</h5>
+                </div>
+              </div>
+              <div class="col-md-9">
+                <div class="card-body">
+                  <h5 class="card-title fw-light">: <%= contact.name %></h5>
+                  <h5 class="card-title fw-light">: <%= contact.email %></h5>
+                  <h5 class="card-title fw-light">: <%= contact.gender %></h5>
+                  <h5 class="card-title fw-light">: <%= contact.nohp %></h5>
+                  <h5 class="card-title fw-light">: <%= contact.address %></h5>
+                </div>
+              </div>
+            </div>
+            <div class="d-flex flex-column m-3 mt-4">
+              <a
+                href="http://localhost:5000/api/form-update-contact/<%= contact._id %>"
+                class="btn btn-primary mb-2"
+                >Edit</a
+              >
+              <a
+                href="http://localhost:5000/api/contact/delete/<%= contact._id %>"
+                class="btn btn-danger"
+                onclick="return confirm('ingin menghapus <%= contact.name %> dari kontak ?');"
+                >Delete</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+      <% } %>
+    </div>
+  </div>
+</div>
